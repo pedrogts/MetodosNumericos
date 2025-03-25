@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <math.h>
 
-#define PI 3.14159265358979323846
-
 double funcao(double x);
 void mostrartabela();
 double erroArredondamento(int decimais, double h);
@@ -57,6 +55,6 @@ void mostrartabela(){
 }
 
 double erroArredondamento(int decimais, double h) {
-    double erro = h / (2 * pow(10, decimais));
+    double erro = trapezios * h / (2 * pow(10, decimais));
     return erro;
 }
