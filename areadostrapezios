@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <math.h>
+
+#define PI 3.14159265358979323846
+
+double funcao(double x);
+void mostrartabela();
+double erroArredondamento(int decimais, double h);
+
+int main() {
+    int trapezios, decimais;
+    double a, b, h, somaTrapezios = 0.0, x, fx;
+
+    printf("Digite a variavel(b): ");
+    scanf("%lf", &b);
+    printf("Digite a variavel(a): ");
+    scanf("%lf", &a);
+    printf("Digite o numero de casas decimais para o resultado: ");
+    scanf("%d", &decimais);
+    printf("Digite o numero de trapezios: ");
+    scanf("%d", &trapezios);
+
+    h = (b - a) / trapezios;
+    
+    mostrartabela();
+    
+    for (int i = 0; i <= trapezios; i++) {
+        x = a + i * h;
+        fx = funcao(x);
+        printf("%-10.5f\t%-10.*f\n", x, decimais, fx); 
+
+        if (i == 0 || i == trapezios) {
+            somaTrapezios = somaTrapezios + fx / 2; 
+        } else {
+            somaTrapezios = somaTrapezios + fx;
+        }
+    }
+
+    somaTrapezios = somaTrapezios * h;
+
+    printf("\nSoma da area dos trapezios: %.*f\n", decimais, somaTrapezios);
+
+    double erro = erroArredondamento(decimais, h);
+    printf("Erro de arredondamento maximo: %.*f\n", decimais + 5, erro);
+
+    return 0;
+}
+
+double funcao(double x) {
+    return log10(x);
+}
+
+void mostrartabela(){
+    printf("\nTabela de valores (x, f(x)):\n");
+    printf("x\t\tf(x)\n");
+    printf("--------------------------\n");
+}
+
+double erroArredondamento(int decimais, double h) {
+    double erro = h / (2 * pow(10, decimais));
+    return erro;
+}
