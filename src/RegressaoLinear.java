@@ -58,7 +58,7 @@ public class RegressaoLinear {
     }
 
     public double coeficienteDeterminacao(List<Double> lista1, List<Double> lista2) {
-        return pow(correlacaoPearson(lista1, lista2), 2);
+        return (pow(correlacaoPearson(lista1, lista2), 2) * 100);
     }
 
     public double equacaoRetaB(List<Double> lista1, List<Double> lista2) {
@@ -73,7 +73,7 @@ public class RegressaoLinear {
         Scanner sc = new Scanner(System.in);
         System.out.printf("Media de X: %.6f\t\tMedia de Y: %.6f\t\tMedia de XY: %.6f\n", media(lista1), media(lista2), mediaXY(lista1, lista2));
         System.out.printf("Desvio padrao de X: %.6f\t\t\t\t\tDesvio padrao de Y: %.6f\n", desvioPadrao(lista1), desvioPadrao(lista2));
-        System.out.printf("Covariancia: %.6f \t\tCorrelacao: %.6f\t\tDeterminacao: %.2f%%\n", covariancia(lista1, lista2), correlacaoPearson(lista1, lista2), correlacaoPearson(lista2, lista1), coeficienteDeterminacao(lista1, lista2));
+        System.out.printf("Covariancia: %.6f \t\tCorrelacao: %.6f\t\tDeterminacao: %.2f%%\n", covariancia(lista1, lista2), correlacaoPearson(lista1, lista2), coeficienteDeterminacao(lista1, lista2));
         System.out.printf("Equacao da reta: %.6f + %.6fx\n", equacaoRetaA(lista1, lista2), equacaoRetaB(lista1, lista2));
         System.out.println("Escolha um valor para x: ");
         double x = sc.nextDouble();
